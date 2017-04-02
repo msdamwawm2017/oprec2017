@@ -1,4 +1,5 @@
 // JavaScript Document
+
 $(function(){
   var division = [
     'Relasi Tahap Persiapan Bersama',
@@ -12,6 +13,14 @@ $(function(){
     'Kajian Strategis',
     'Analisis Data dan Aspirasi'
   ];
+	
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 100) {
+        $('.main_h').addClass('sticky');
+    } else {
+        $('.main_h').removeClass('sticky');
+    }
+  });
 
   var divisionItemTemplate=
     '<div class="col s12 division-item">'
@@ -24,7 +33,11 @@ $(function(){
     + '<div class="panel-heading"><span></span></div></div></div>';
 
   $('.datepicker').pickadate({
-  	format:'dd/mm/yyyy'
+  	format:'dd/mm/yyyy',
+	  today: '',
+	  close: 'Set',
+	  selectYears:60,
+	  selectMonths:true
   });
 
   var isShuffled=false;
