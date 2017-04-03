@@ -146,6 +146,15 @@ $(function(){
 	  //MBTI
 	  $('#mbti-review').html($('#mbti').val());
 	  
+	  //talentoday.com
+	  for (var i = 1; i<=4; ++i){
+		  $('#d_'+i+"-review").html($('#d_'+i).val());
+		  $('#c_'+i+"-review").html($('#c_'+i).val());
+		  $('#a_'+i+"-review").html($('#a_'+i).val());
+		  $('#m_'+i+"-review").html($('#m_'+i).val());
+		  $('#e_'+i+"-review").html($('#e_'+i).val());
+	  }
+	  
 	  //division
 	  var order = $('#division-review');
         order.html('<ol></ol>');
@@ -155,7 +164,7 @@ $(function(){
 	  
 	  //reasons
 	  for (var i = 1; i <= 3; ++i) {
-            $('#reason' + i + '-review').html($('#reason' + i).val());
+            $('#reason' + i + '-review').html('<em>'+$('#reason' + i).val()+'</em>');
         }
   }
 
