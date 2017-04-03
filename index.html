@@ -147,7 +147,6 @@
 		</div>
 		
 	</div>
-	<form class="col s12 m12">
 			<div class="container">
 				<div class="row">
 					<div class="col s12">
@@ -369,11 +368,53 @@
 					<label for="agree" data-error="Anda harus menyetujui ketentuan ini">Dengan ini, saya menyatakan bahwa data yang saya masukan di atas adalah benar. Saya secara sadar memilih pilihan divisi tersebut di atas. Saya juga menerima bila saya tidak diterima di salah satu dari tiga divisi pertama pilihan saya. Dan, saya menyatakan bahwa saya akan berkomitmen di divisi yang akan menerima saya nanti.</label>
 				</div>
 				<div class="row">
-					<button class="btn waves-effects waves-ripple">Kirim</button>
+					<button class="btn waves-effects waves-ripple submit-button">Kirim</button>
 				</div>
 			</div>
-	</form>
 </div>
+
+<div class="modal modal-fixed-footer" id="review-modal">
+	<div class="modal-content">
+		<h4>Konfirmasi Data</h4>
+		<h5>Identitas Diri</h5>
+		<span><strong>Nama: </strong></span><span id="nama-review"></span><br>
+		<span><strong>NIM: </strong></span><span id="nim-review"></span><br>
+		<span><strong>TTL: </strong></span><span id="ttl-review"></span><br>
+		<span><strong>No HP: </strong></span><span id="telp-review"></span><br>
+		<span><strong>Alamat e-mail: </strong></span><span id="email-review"></span><br>
+		<span><strong>ID Line: </strong></span>
+		<span id="line-review"></span><br>
+		<span><strong>Kontak darurat: </strong></span><span id="emergency-review"></span><br>
+		<span><strong>Alamat:</strong><div id="alamat-review"></div><br>
+		<span><strong>Kendaraan:</strong><div id="kendaraan-review"></div><br>
+		<span><strong>Keahlian:</strong><div id="keahlian-review"></div><br>
+		<span><strong>Pengalaman organisasi:</strong><div id="organisasi-review"></div><br>
+		<span><strong>Pengalaman kepanitiaan:</strong><div id="kepanitiaan-review"></div><br>
+		<span><strong>Kesibukan:</strong><div id="kesibukan-review"></div><br>
+		
+		<h5>Hasil Tes</h5>
+		<span><strong>MBTI: </strong></span><span id="mbti-review"></span><br>
+		
+		<h5>Pilihan Divisi</h5>
+		<div id="division-review"></div>
+
+		<span>Alasan masuk <strong class="division-1"></strong>:</span>
+		<div id="reason1-review"></div><br>
+
+		<span>Alasan masuk <strong class="division-2"></strong>:</span>
+		<div id="reason2-review"></div><br>
+
+		<span>Alasan masuk <strong class="division-3"></strong>:</span>
+		<div id="reason3-review"></div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn-flat waves-effects waves-ripple" id="real-submit-button">Kirim</button>
+		<button class="btn-flat waves-effects waves-ripple" id="reset-button">Batal</button>
+	</div>
+</div>
+
+<form name="main-form" id="main-form" method="get" style="display: none"></form>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/particles.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.sortable.min.js"></script>

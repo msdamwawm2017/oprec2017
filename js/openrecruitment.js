@@ -11,7 +11,8 @@ $(function(){
     'Publikasi Luar Jaringan',
     'Kreasi Visual',
     'Kajian Strategis',
-    'Analisis Data dan Aspirasi'
+    'Analisis Data dan Aspirasi',
+	'Manajemen Sumber Daya Anggota'
   ];
 	
   $(window).scroll(function() {
@@ -53,6 +54,11 @@ $(function(){
         // append clear to make the well works
         pool.append('<div class="clear"></div>');
     }
+	
+  $('.modal').modal({
+	  dismissible:false,
+	  
+  });
 
   initializePool();
 
@@ -112,7 +118,130 @@ $(function(){
         },
         revert: 300
     });
+	
+  $('.submit-button').click(function(){
+	  fillModal();
+	  $('#review-modal').modal('open');
+  });
+	
+  $('#reset-button').click(function(){
+	  $('#review-modal').modal('close');
+  });
+	
+  function fillModal(){
+	  $('#nama-review').html($('#name').val());
+	  $('#nim-review').html($('#nim').val());
+	  $('#ttl-review').html($('#tempatLahir').val()+", "+$('#tanggalLahir').val());
+	  $('#telp-review').html($('#nomorTelepon').val());
+	  $('#email-review').html($("#email").val());
+	  $('#line-review').html($('#idLine').val());
+	  $('#emergency-review').html($('#noDarurat').val()+" ("+$('#pihakDarurat').val()+")");
+	  $('#alamat-review').html($("#alamat").val());
+	  $('#kendaraan-review').html($("#kendaraan").val());
+	  $('#keahlian-review').html($("#keahlian").val());
+	  $('#organisasi-review').html($("#organisasi").val());
+	  $('#kepanitiaan-review').html($("#kepanitiaan").val());
+	  $('#kesibukan-review').html($("#kesibukan").val());
+	  
+	  //MBTI
+	  $('#mbti-review').html($('#mbti').val());
+	  
+	  //division
+	  var order = $('#division-review');
+        order.html('<ol></ol>');
+        $('.division-item').each(function(i, e) {
+            order.find('ol').append('<li>' + $(e).data('division') + '</li>');
+        });
+	  
+	  //reasons
+	  for (var i = 1; i <= 3; ++i) {
+            $('#reason' + i + '-review').html($('#reason' + i).val());
+        }
+  }
 
+  var formKey = "e/1FAIpQLSeqprEkjYE1oS5Wpi_sNvtZOD_tc1J-yPEZRjp3w411le5r2Q";
+	
+  var formEntries = {
+	  nama: "entry.1839260254",
+	  nim: "entry.1654309158",
+	  tempatlahir: "entry.885649470",
+	  tanggallahir: "entry.523073533",
+	  notelp: "entry.1402243068",
+	  notelpdarurat: "entry.1855563413",
+	  pemilikdarurat: "entry.1429309956",
+	  email: "entry.1156103119",
+	  alamat: "entry.1736388662",
+	  idline: "entry.1203344181",
+	  penyakit: "entry.1325252122",
+	  kendaraan: "entry.758369097",
+	  keahlian: "entry.1916409383",
+	  organisasi: "entry.1789619131",
+	  kepanitiaan: "entry.1183517718",
+	  kesibukan: "entry.1333077773",
+	  
+	  divisi:[
+		"entry.2100413130",
+		"entry.772961315",
+		"entry.907878507",
+		"entry.141231101",//4
+		"entry.1918773200",
+		"entry.1139148372",
+		"entry.1422858740",
+		"entry.412468260",//8
+		"entry.1041488826",
+		"entry.101889886",
+		"entry.1776833333"
+	  ],
+	  
+	  alasan:[
+		"entry.264803696",
+		"entry.93929055",
+		"entry.768048502"
+	  ],
+	  
+	  MBTI: "entry.1086493230",
+	  
+	  communication:[
+		"entry.1814451636",
+		"entry.252883980",
+		"entry.2117960294",
+		"entry.44541694"
+	  ],
+	  
+	  manage:[
+		"entry.1624341122",
+		"entry.511211685",
+		"entry.1835363456",
+		"entry.1723298695"
+	  ],
+	  
+	  dare:[
+		"entry.1112402529",
+		"entry.314846700",
+		"entry.1505820067",
+		"entry.436614859"
+	  ],
+	  
+	  adapt:[
+		"entry.773360498",
+		"entry.63710511",
+		"entry.1270815412",
+		"entry.2063094220"
+	  ],
+	  
+	  excel:[
+		"entry.2109638102",
+		"entry.1790191347",
+		"entry.1253226378",
+		"entry.1248878201"
+	  ]
+  };
+  
+  $('#real-submit-button').click(function(){
+	  var url = "//docs.google.com/d/"+formKey+"/formResponse";
+	  
+  });
+  
   particlesJS("particles-js",{
     "particles": {
       "number": {
