@@ -5,7 +5,6 @@ $(function(){
     'Relasi Tahap Persiapan Bersama',
     'Relasi S1 ITB Ganesha',
     'Relasi ITB Jatinangor',
-    'Relasi ITB Cirebon',
     'Relasi Pascasarjana dan Hubungan Masyarakat',
     'Publikasi Dalam Jaringan',
     'Publikasi Luar Jaringan',
@@ -118,16 +117,123 @@ $(function(){
         },
         revert: 300
     });
+
+  function validate(){
+    var valid = true;
+    var parent = $('#belum-diisi');
+    parent.html('<ol></ol>');
+
+    if($('#name').val()==""){
+      parent.find('ol').append('<li>Nama lengkap Anda</li>');
+      valid = false;
+    }
+    if($('#nim').val()==""){
+      parent.find('ol').append('<li>NIM Anda</li>');
+      valid = false;
+    }
+    if($('#tempatLahir').val()=="" || $('#tanggalLahir').val()==""){
+      parent.find('ol').append('<li>Tempat tanggal lahir Anda</li>');
+      valid = false;
+    }
+    if($('#nomorTelepon').val()==""){
+      parent.find('ol').append('<li>Nomor telepon Anda</li>');
+      valid = false;
+    }
+    if($('#email').val()==""){
+      parent.find('ol').append('<li>Alamat email Anda</li>');
+      valid = false;
+    }
+    if($('#idLine').val()==""){
+      parent.find('ol').append('<li>ID Line Anda</li>');
+      valid = false;
+    }
+    if(($('#noDarurat').val()=="") || ($('#pihakDarurat').val()=="")){
+      parent.find('ol').append('<li>Kontak darurat</li>');
+      valid = false;
+    }
+    if($('#alamat').val()==""){
+      parent.find('ol').append('<li>Alamat tinggal Anda di Bandung</li>');
+      valid = false;
+    }
+    if($('#kendaraan').val()==""){
+      parent.find('ol').append('<li>Kendaraan yang Anda miliki</li>');
+      valid = false;
+    }
+    if($('#keahlian').val()==""){
+      parent.find('ol').append('<li>Keahlian Anda</li>');
+      valid = false;
+    }
+    if($('#organisasi').val()==""){
+      parent.find('ol').append('<li>Pengalaman organisasi Anda</li>');
+      valid = false;
+    }
+    if($('#kepanitiaan').val()==""){
+      parent.find('ol').append('<li>Pengalaman kepanitiaan Anda</li>');
+      valid = false;
+    }
+    if($('#kesibukan').val()==""){
+      parent.find('ol').append('<li>Kesibukan Anda setahun mendatang</li>');
+      valid = false;
+    }
+    if($('#mbti').val()==""){
+      parent.find('ol').append('<li>Hasil MBTI Anda</li>');
+      valid = false;
+    }
+
+    var ttoday=true;
+    for (var i = 1; i<=4; ++i){
+      if($('#d_'+i).val()==""){
+        valid=false; ttoday=false;
+      }
+      if($('#c_'+i).val()==""){
+        valid=false; ttoday=false;
+      }
+      if($('#a_'+i).val()==""){
+        valid=false; ttoday=false;
+      }
+      if($('#m_'+i).val()==""){
+        valid=false; ttoday=false;
+      }
+      if($('#e_'+i).val()==""){
+        valid=false; ttoday=false;
+      }
+    }
+    if(!ttoday) parent.find('ol').append('<li>Hasil Talentoday.com Anda</li>');
+    //if($('#tempatLahir').val()=="") return false;
+
+    var reasonfilled=true;
+    for (var i = 1; i <= 3; ++i) {
+            if($('#reason' + i).val()==""){
+              valid=false;
+              reasonfilled=false;
+            };
+    }
+    if(!reasonfilled) parent.find('ol').append('<li>Alasan masuk divisi pilihan Anda</li>');
+
+    if(!$('#agree').is(':checked')){
+      parent.append('<span>...dan Anda belum menyetujui pernyataan akhirnya</span>');
+      valid = false;
+    }
+    return valid;
+  }
 	
   $('.submit-button').click(function(){
-	  fillModal();
-	  $('#review-modal').modal('open');
+    if(validate()){
+  	  fillModal();
+  	  $('#review-modal').modal('open');
+    }
+    else
+      $('#error-modal').modal('open');
   });
 	
   $('#reset-button').click(function(){
 	  $('#review-modal').modal('close');
   });
 	
+   $('#reset-button-2').click(function(){
+    $('#error-modal').modal('close');
+  });
+
   function fillModal(){
 	  $('#nama-review').html($('#name').val());
 	  $('#nim-review').html($('#nim').val());
@@ -138,6 +244,7 @@ $(function(){
 	  $('#emergency-review').html($('#noDarurat').val()+" ("+$('#pihakDarurat').val()+")");
 	  $('#alamat-review').html($("#alamat").val());
 	  $('#kendaraan-review').html($("#kendaraan").val());
+    $('#penyakit-review').html($("#penyakit").val());
 	  $('#keahlian-review').html($("#keahlian").val());
 	  $('#organisasi-review').html($("#organisasi").val());
 	  $('#kepanitiaan-review').html($("#kepanitiaan").val());
@@ -192,14 +299,14 @@ $(function(){
 		"entry.2100413130",
 		"entry.772961315",
 		"entry.907878507",
-		"entry.141231101",//4
-		"entry.1918773200",
-		"entry.1139148372",
-		"entry.1422858740",
-		"entry.412468260",//8
-		"entry.1041488826",
-		"entry.101889886",
-		"entry.1776833333"
+		// "entry.141231101",//4
+		// "entry.1918773200",
+		// "entry.1139148372",
+		// "entry.1422858740",
+		// "entry.412468260",//8
+		// "entry.1041488826",
+		// "entry.101889886",
+		// "entry.1776833333"
 	  ],
 	  
 	  alasan:[
@@ -245,10 +352,53 @@ $(function(){
 		"entry.1248878201"
 	  ]
   };
-  
+ // https://docs.google.com/forms/d/e/1FAIpQLSeqprEkjYE1oS5Wpi_sNvtZOD_tc1J-yPEZRjp3w411le5r2Q/viewform?usp=sf_link
+  //https://docs.google.com/forms/d/e/1FAIpQLScbzFTN7q93MLpTeN3aPizpSlvyvGCJjvnKMxcT_R9I7gaPxw/viewform?usp=sf_link
   $('#real-submit-button').click(function(){
-	  var url = "//docs.google.com/d/"+formKey+"/formResponse";
-	  
+	  var url = "https://docs.google.com/forms/d/e/1FAIpQLSeqprEkjYE1oS5Wpi_sNvtZOD_tc1J-yPEZRjp3w411le5r2Q/formResponse";
+    console.log("1");
+    var form = $('#main-form');
+    form.attr('action', url);
+    form.html('');
+    console.log("2");
+    form.append('<input type="text" name="' + formEntries.nim + '" value="' + $('#nim').val() + '">');
+      form.append('<input type="text" name="' + formEntries.nama + '" value="' + $('#name').val() + '">');
+      form.append('<input type="text" name="' + formEntries.tempatlahir + '" value="' + $('#tempatLahir').val() + '">');
+      form.append('<input type="text" name="' + formEntries.tanggallahir + '" value="' + $('#tanggalLahir').val() + '">');
+      form.append('<input type="text" name="' + formEntries.notelp + '" value="&#39;' + $('#nomorTelepon').val() + '">');
+      form.append('<input type="text" name="' + formEntries.notelpdarurat + '" value="&#39;' + $('#noDarurat').val() + '">');
+      form.append('<input type="text" name="' + formEntries.pemilikdarurat + '" value="' + $('#pihakDarurat').val() + '">');
+      form.append('<input type="text" name="' + formEntries.email + '" value="' + $('#email').val() + '">');
+      form.append('<input type="text" name="' + formEntries.alamat + '" value="' + $('#alamat').val() + '">');
+      form.append('<input type="text" name="' + formEntries.idline + '" value="' + $('#idLine').val() + '">');
+      form.append('<input type="text" name="' + formEntries.penyakit + '" value="' + $('#penyakit').val() + '">');
+      form.append('<input type="text" name="' + formEntries.kendaraan + '" value="' + $('#kendaraan').val() + '">');
+      form.append('<input type="text" name="' + formEntries.keahlian + '" value="' + $('#keahlian').val() + '">');
+      form.append('<input type="text" name="' + formEntries.organisasi + '" value="' + $('#organisasi').val() + '">');
+      form.append('<input type="text" name="' + formEntries.kepanitiaan + '" value="' + $('#kepanitiaan').val() + '">');
+      form.append('<input type="text" name="' + formEntries.kesibukan + '" value="' + $('#kesibukan').val() + '">');
+    console.log("3");
+      $('.division-item').each(function(i, e) {
+            if(i<3) form.append('<input type="text" name="' + formEntries.divisi[i] + '" value="' + $(e).data('division') + '">');
+      });
+
+      for (i = 1; i <= 3; ++i) {
+            form.append('<input type="text" name="' + formEntries.alasan[i-1] + '" value="' + $('#reason' + i).val() + '">');
+      }
+
+      form.append('<input type="text" name="' + formEntries.MBTI + '" value="' + $('#mbti').val() + '">');
+
+      for (var i = 1; i<=4; ++i){
+        form.append('<input type="text" name="' + formEntries.dare[i-1] + '" value="' + $('#d_'+i).val() + '">');
+        form.append('<input type="text" name="' + formEntries.communication[i-1] + '" value="' + $('#c_'+i).val() + '">');
+        form.append('<input type="text" name="' + formEntries.adapt[i-1] + '" value="' + $('#a_'+i).val() + '">');
+        form.append('<input type="text" name="' + formEntries.manage[i-1] + '" value="' + $('#m_'+i).val() + '">');
+        form.append('<input type="text" name="' + formEntries.excel[i-1] + '" value="' + $('#e_'+i).val() + '">');
+      }
+      console.log("4");
+
+      form.submit();    
+      console.log("5");
   });
   
   particlesJS("particles-js",{
