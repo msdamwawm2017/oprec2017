@@ -4,14 +4,14 @@ $(function(){
   var division = [
     'Relasi Tahap Persiapan Bersama',
     'Relasi S1 ITB Ganesha',
-    'Relasi ITB Jatinangor',
+    'Relasi Jatinangor',
     'Relasi Pascasarjana dan Hubungan Masyarakat',
     'Publikasi Dalam Jaringan',
     'Publikasi Luar Jaringan',
     'Kreasi Visual',
     'Kajian Strategis',
     'Analisis Data dan Aspirasi',
-	'Manajemen Sumber Daya Anggota'
+	  'Manajemen Sumber Daya Anggota'
   ];
 	
   $(window).scroll(function() {
