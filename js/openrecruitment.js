@@ -11,7 +11,7 @@ $(function(){
     'Kreasi Visual',
     'Kajian Strategis',
     'Analisis Data dan Aspirasi',
-	  'Manajemen Sumber Daya Anggota'
+	'Manajemen Sumber Daya Anggota'
   ];
 	
   $(window).scroll(function() {
@@ -376,8 +376,8 @@ $(function(){
         }
       },
       "size": {
-        "value": 3,
-        "random": true,
+        "value": 2,
+        "random": false,
         "anim": {
           "enable": false,
           "speed": 40,
@@ -389,12 +389,12 @@ $(function(){
         "enable": true,
         "distance": 125,
         "color": "#004dbb",
-        "opacity": 0.2,
+        "opacity": 0.5,
         "width": 1
       },
       "move": {
         "enable": true,
-        "speed": 2,
+        "speed": 3,
         "direction": "top-right",
         "random": false,
         "straight": false,
